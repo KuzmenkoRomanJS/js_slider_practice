@@ -1,0 +1,108 @@
+.slider {
+  position: relative;
+
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 0 4px;
+
+  box-sizing: border-box;
+
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.slider__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.slider__prev,
+.slider__next {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+
+  z-index: 5;
+
+  transform: translate(0, -50%);
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+  border: 0;
+
+  background: #fff;
+
+  transition: background-color 0.3s;
+  font-size: 2rem;
+
+  cursor: pointer;
+}
+
+.slider__next {
+  left: auto;
+  right: 12px;
+}
+
+.slider__prev:hover,
+.slider__next:hover {
+  background-color: #2da6ff;
+}
+
+.fade .slider__body,
+.clip .slider__body {
+  position: relative;
+
+  box-sizing: content-box;
+  width: 100%;
+  aspect-ratio: 2;
+  overflow: hidden;
+}
+
+.fade .slider__slide,
+.clip .slider__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  box-sizing: border-box;
+}
+
+.fade .slider__slide {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out 0s;
+  z-index: 0;
+}
+
+.fade .slider__slide--current {
+  opacity: 1;
+  z-index: 1;
+}
+
+.clip .slider__slide {
+  transition: clip-path 1.2s ease-in-out 0s;
+  z-index: 0;
+  clip-path: circle(30px at 50% 50%);
+}
+
+.clip .slider__slide--prev {
+  /* z-index: 10; */
+  clip-path: circle(30px at 42px 50%);
+}
+
+.clip .slider__slide--next {
+  /* z-index: 10; */
+  clip-path: circle(30px at calc(100% - 42px) 50%);
+}
+
+.clip .slider__slide--current {
+  z-index: 1;
+  clip-path: circle(180% at 50% 50%);
+}
